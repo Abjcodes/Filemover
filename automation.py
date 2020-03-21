@@ -15,7 +15,11 @@ destinations = {
 def filemover():
     for folders, subfolders, filenames in os.walk(path):
         for filename in filenames:
-            if filename.endswith('{}'.format('.pdf')):
+            if filename.endswith('{}'.format('.pdf')) or filename.endswith('{}'.format('.epub')):
+                shutil.move(os.path.join(folders, filename), os.path.join(destinations['dpdf'], filename))
+                print('Moving done!!')
+
+            elif filename.endswith('{}'.format('.mobi')):
                 shutil.move(os.path.join(folders, filename), os.path.join(destinations['dpdf'], filename))
                 print('Moving done!!')
 
@@ -24,7 +28,7 @@ def filemover():
 
                 print('Moving done!!')
 
-            elif filename.endswith('{}'.format('.mp4')):
+            elif filename.endswith('{}'.format('.mp4')) or filename.endswith('{}'.format('.mkv')):
                 shutil.move(os.path.join(folders, filename), os.path.join(destinations['dmkv'], filename))
 
                 print('Moving done!!')
